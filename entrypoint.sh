@@ -1,18 +1,22 @@
 #!/bin/bash
-set -e
+set -e  # Hace que el script falle si hay un error
 
-# Espera a que la base de datos esté disponible (opcional)
-# Puedes usar: wait-for-it.sh o sleep 10
+# Espera un poco si el contenedor se inicia demasiado rápido
+sleep 5
 
-# Inicializa superset y crea admin si no existe
+# Aplica las migraciones de la base de datos
 superset db upgrade
+
+# Crea el usuario admin si no existe
 superset fab create-admin \
     --username admin \
     --firstname Superset \
     --lastname Admin \
     --email admin@example.com \
     --password admin || true
+
+# Inicializa Superset
 superset init
 
-# Ejecuta el comando que venga después (CMD)
-exec "$@"
+# Finalmente arranca el servidor
+exec superset run -p 8088 --with-threads --reload --debugger
