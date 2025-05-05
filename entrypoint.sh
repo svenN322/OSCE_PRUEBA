@@ -17,6 +17,7 @@ superset fab create-admin \
 
 # Inicializa Superset
 superset init
+superset run -h 0.0.0.0 -p 8088
 
 # Finalmente arranca el servidor
 exec superset run -p 8088 --with-threads --reload --debugger
