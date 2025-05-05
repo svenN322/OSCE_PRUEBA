@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: superset-dashboard
+    env: docker
+    plan: free
+    region: oregon
+    envVars:
+      - key: SUPERSET_SECRET_KEY
+        value: some_random_secure_string
