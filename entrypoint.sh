@@ -15,7 +15,16 @@ superset fab create-admin \
     --email admin@example.com \
     --password admin || true
 
+superset db upgrade
+superset fab create-admin \
+    --username admin \
+    --firstname Admin \
+    --lastname User \
+    --email admin@example.com \
+    --password admin
+
 # Inicializa Superset
+superset import-datasources -p /app/db_connection.yaml
 superset init
 superset run -h 0.0.0.0 -p 8088
 
