@@ -1,4 +1,0 @@
-databases:
-  - database_name: PostgreSQL Render
-    sqlalchemy_uri: postgresql+psycopg2://o_v_user:Rvwccvul4iqoLJhH6PtzQmLOMgPFHUHh@dpg-d1besoh5pdvs73dr29d0-a.oregon-postgres.render.com:5432/superset_db
-    expose_in_sqllab: true
